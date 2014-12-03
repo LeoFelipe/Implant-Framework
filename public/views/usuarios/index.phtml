@@ -1,0 +1,61 @@
+<div class="box-body table-responsive">
+    <table id="dinamicTable" class="table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USUÁRIO</th>
+                <th>GRUPO</th>
+                <th>SETOR</th>
+                <th>STATUS</th>
+                <th width="12%">OPÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($view_usuarios as $usuario) : 
+                    
+                if ($usuario->getStatus() == 1) {
+                    $imgStatus = '<img title="Ativo" src="'.IMG.'icons/active.png">';
+                } else {
+                    $imgStatus = '<img title="Inativo" src="'.IMG.'icons/inactive.png">';
+                }
+            ?>
+                <tr>
+                    <td style="text-align: center"><?php echo $usuario->getId(); ?></td>
+                    <td><?php echo $usuario->getNome(); ?></td>
+                    <td><?php echo $usuario->getGrupo()->getNome(); ?></td>
+                    <td><?php echo $usuario->getSetor()->getNome(); ?></td>
+                    <td align="center"><?php echo $imgStatus; ?></td>
+                    <td align="center">
+                        <a class="btn btn-sm2 btn-info" title="Permissões ID <?php echo $usuario->getId(); ?>" 
+                           href="<?php echo \Implant\FrontController::getController()."/permissoes/id/{$usuario->getId()}"; ?>">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                        </a>
+                        <a class="btn btn-sm2 btn-success" title="Alterar Senha ID <?php echo $usuario->getId(); ?>" 
+                           href="<?php echo \Implant\FrontController::getController()."/editarSenha/id/{$usuario->getId()}"; ?>">
+                            <i class="glyphicon glyphicon-lock"></i>
+                        </a>
+                        <a class="btn btn-sm2 btn-warning" title="Editar ID <?php echo $usuario->getId(); ?>" 
+                           href="<?php echo \Implant\FrontController::getController()."/editar/id/{$usuario->getId()}"; ?>">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a class="btn btn-sm2 btn-danger" title="Excluir ID <?php echo $usuario->getId(); ?>" 
+                           href="<?php echo \Implant\FrontController::getController()."/excluir/id/{$usuario->getId()}"; ?>"
+                           onclick="return confirm('Deseja realmente excluir o ID <?php echo $usuario->getId(); ?> ?');">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>USUÁRIO</th>
+                <th>GRUPO</th>
+                <th>SETOR</th>
+                <th>STATUS</th>
+                <th>OPÇÕES</th>
+            </tr>
+        </tfoot>
+    </table>
+</div><!-- /.box-body -->

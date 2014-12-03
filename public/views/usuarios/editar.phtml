@@ -1,0 +1,102 @@
+<form role="form" id="form" name="form" action="<?php echo ROOT . \Implant\FrontController::getControllerActionParams(); ?>" method="POST">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" readonly value="<?php echo $view_usuarios['usuarios']->getId(); ?>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nome">Grupo</label>
+                    <select class="form-control" id="grupo" name="grupo">
+                        <option value="">Selecione um Grupo</option>
+                        <?php 
+                            foreach ($view_usuarios['grupos'] as $grupo) : 
+                                $selected = ($grupo->getId() === $view_usuarios['usuarios']->getGrupo()->getId()) ? 'selected' : '';
+                        ?>
+                        <option value="<?php echo $grupo->getId(); ?>" <?php echo $selected; ?>><?php echo $grupo->getNome(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $view_usuarios['usuarios']->getNome(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $view_usuarios['usuarios']->getEmail(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" value="<?php echo $view_usuarios['usuarios']->getLogin(); ?>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="setor">Setor</label>
+                    <select class="form-control" id="setor" name="setor">
+                        <option value="">Selecione um Setor</option>
+                        <?php 
+                            foreach ($view_usuarios['setores'] as $setor) : 
+                                $selected = ($setor->getId() === $view_usuarios['usuarios']->getSetor()->getId()) ? 'selected' : '';
+                        ?>
+                        <option value="<?php echo $setor->getId(); ?>" <?php echo $selected; ?>><?php echo $setor->getNome(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $view_usuarios['usuarios']->getCPF(); ?>">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="cargo">Cargo</label>
+                    <select class="form-control" id="cargo" name="cargo">
+                        <option value="">Selecione um Cargo</option>
+                        <?php 
+                            foreach ($view_usuarios['cargos'] as $cargo) : 
+                                $selected = ($cargo->getId() === $view_usuarios['usuarios']->getCargo()->getId()) ? 'selected' : '';
+                        ?>
+                        <option value="<?php echo $cargo->getId(); ?>" <?php echo $selected; ?>><?php echo $cargo->getNome(); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dtNiver">Data de Nascimento</label>
+                    <input type="text" class="form-control" id="dtNiver" name="dtNiver" value="<?php echo $view_usuarios['usuarios']->getDtNiver(); ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary center-block">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>

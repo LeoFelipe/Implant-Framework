@@ -1,0 +1,96 @@
+<form role="form" id="form" name="form" action="<?php echo \Implant\FrontController::getAction(); ?>" method="POST">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nome">Nome do Controller ( *no plural )</label>
+                    <input tabindex="1" type="text" class="form-control" id="nome" name="nome" placeholder="Exemplos: clientes, pessoas, equipamentos ...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="onMenu">Visível no Menu?</label>
+                    <select tabindex="2" class="form-control" id="onMenu" name="onMenu">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select tabindex="3" class="form-control" id="status" name="status">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TABELA SELECIONAR ACTIONS -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box-body table-responsive">
+                <label>Selecione a(s) Action(s) que pertencerá(ão) a este Controller</label>
+                <table id="dinamicTable" class="table table-hover table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th width="18%"> SELECIONE </th>
+                            <th width="10%">ID</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($view_actions as $action) : ?>
+                            <tr>
+                                <td align="center">
+                                    <a class="btn btn-sm2 btn-success selectRow" title="Selecionar esta Action" href="#">
+                                        <i class="glyphicon glyphicon-hand-down"></i>
+                                    </a>
+                                </td>
+                                <td align="center"><?php echo $action->getId(); ?></td>
+                                <td><?php echo $action->getNome(); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- FIM TABELA SELECIONAR ACTIONS -->
+    
+    <!-- TABELA ACTIONS SELECIONADAS -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box-body table-responsive">
+                <hr>
+                <label>Action(s) selecionadas para este Controller</label>
+                <table id="fixedTable" class="table table-hover table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th width="18%">VISÍVEL ( <input type="checkbox" id="chkVisibleAll"> )</th>
+                            <th width="10%">ID</th>
+                            <th>ACTION</th>
+                            <th width="18%">OPCÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- FIM TABELA ACTIONS SELECIONADAS -->
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary center-block">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>

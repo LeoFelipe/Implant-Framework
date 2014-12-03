@@ -1,0 +1,60 @@
+<aside class="right-side">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            <?php
+                require_once(TEMPLATE . 'AdminLTE-master/php/titleContent.php');
+            ?>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="<?php echo ROOT . 'index'; ?>">
+                    <i class="fa fa-home"></i> 
+                    <?php echo 'Home'; ?>
+                </a>
+            </li>
+            <?php if(\Implant\FrontController::getControllerAction() !== 'index/index'): ?>
+                <?php if(\Implant\FrontController::getController() !== 'index'): ?>
+                    <li>
+                        <a href="<?php echo ROOT . \Implant\FrontController::getController(); ?>">
+                            <i class="fa fa-gears"></i> 
+                            <?php echo ucfirst(\Implant\FrontController::getController()); ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <li class="active">
+                    <?php
+                        if(\Implant\FrontController::getController() === 'index'):
+                            echo (\Implant\FrontController::getAction() === 'index') ? '' : ucfirst(\Implant\FrontController::getAction());
+                        else:
+                            echo (\Implant\FrontController::getAction() === 'index') ? 'Listar' : ucfirst(\Implant\FrontController::getAction());
+                        endif;
+                    ?>
+                </li>
+            <?php endif; ?>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <?php 
+            if (\Implant\FrontController::getController() === 'index') : 
+                require_once(VIEW . \Implant\FrontController::getController() . DS . \Implant\FrontController::getAction() . '.phtml');
+            else :
+        ?>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <?php require_once(TEMPLATE . 'AdminLTE-master/sections/rightSideBar_navTabs.phtml'); ?>
+<!--                        <div class="box-header">
+                            <h3 class="box-title">
+                                <?php //echo (Implant\FrontController::getAction() === 'index') ? 'Listar' : ucfirst(Implant\FrontController::getAction()); ?>
+                            </h3>                                    
+                        </div>-->
+                        <?php require_once(VIEW . \Implant\FrontController::getController() . DS . \Implant\FrontController::getAction() . '.phtml'); ?>
+                    </div><!-- /.box -->
+                </div>
+            </div>
+        <?php endif; ?>
+    </section><!-- /.content -->
+</aside><!-- /.right-side -->

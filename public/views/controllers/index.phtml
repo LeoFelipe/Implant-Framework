@@ -1,0 +1,47 @@
+<div class="box-body table-responsive">
+    <table id="dinamicTable" class="table table-bordered table-striped table-condensed">
+        <thead>
+            <tr>
+                <th width="10%">ID</th>
+                <th>CONTROLLER</th>
+                <th width="10%">STATUS</th>
+                <th width="10%">OPÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($view_controllers as $controller) : 
+                    
+                if ($controller->getStatus() == 1) {
+                    $imgStatus = '<img title="Ativo" src="'.IMG.'icons/active.png">';
+                } else {
+                    $imgStatus = '<img title="Inativo" src="'.IMG.'icons/inactive.png">';
+                }
+            ?>
+                <tr>
+                    <td><?php echo $controller->getId(); ?></td>
+                    <td><?php echo $controller->getNome(); ?></td>
+                    <td align="center"><?php echo $imgStatus; ?></td>
+                    <td align="center">
+                        <a class="btn btn-sm2 btn-warning" title="Editar ID <?php echo $controller->getId(); ?>" 
+                           href="<?php echo Core\FrontController::getController()."/editar/id/{$controller->getId()}"; ?>">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a class="btn btn-sm2 btn-danger" title="Excluir ID <?php echo $controller->getId(); ?>" 
+                           href="<?php echo Core\FrontController::getController()."/excluir/id/{$controller->getId()}"; ?>"
+                           onclick="return confirm('Deseja realmente excluir o ID <?php echo $controller->getId(); ?> ?');">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>CONTROLLER</th>
+                <th>STATUS</th>
+                <th>OPÇÕES</th>
+            </tr>
+        </tfoot>
+    </table>
+</div><!-- /.box-body -->

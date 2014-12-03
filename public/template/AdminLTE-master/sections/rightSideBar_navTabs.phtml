@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs tabsController">
+    <li <?php if(Implant\FrontController::getAction() === 'index') echo 'class="active"'; ?>>
+        <a href="<?php echo ROOT . Implant\FrontController::getController(); ?>">Listar</a>
+    </li>
+    <li <?php if(Implant\FrontController::getAction() === 'cadastrar') echo 'class="active"'; ?>>
+        <a href="<?php echo ROOT . Implant\FrontController::getController() . '/cadastrar'; ?>">Cadastrar</a>
+    </li>
+    <li <?php echo (Implant\FrontController::getAction() === 'editar') ? 'class="active"' : 'class="disabled"'; ?>>
+        <a class="disabled" href="#">Editar</a>
+    </li>
+    <li class="disabled">
+        <a class="disabled" href="#">Excluir</a>
+    </li>
+</ul>

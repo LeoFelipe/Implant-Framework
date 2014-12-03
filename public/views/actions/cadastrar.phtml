@@ -1,0 +1,27 @@
+<form role="form" id="form" name="form" action="<?php echo \Implant\FrontController::getAction(); ?>" method="POST">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="nome">Nome da Action</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da action">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary center-block">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>

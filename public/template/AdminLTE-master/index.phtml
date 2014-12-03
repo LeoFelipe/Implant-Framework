@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title><?php echo SYSNAME . ' - ' . SYSDESC ?></title>
+        <link href='<?php echo SYSICO ?>' rel='shortcut icon'/>
+        
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <!-- bootstrap 3.1.1 -->
+        <link href="<?php echo TBCSS ?>" rel="stylesheet" type="text/css" />
+        <!-- font Awesome -->
+        <link href="<?php echo ROOT . TEMPLATE ?>AdminLTE-master/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <?php if (\Implant\FrontController::getController() !== 'index' && \Implant\FrontController::getAction() === 'index') : ?>
+            <!-- DATA TABLES -->
+            <link href="<?php echo TBDATATABLECSS ?>" rel="stylesheet" type="text/css" />
+            <link href="<?php echo TABLETOOLSCSS ?>" rel="stylesheet" type="text/css" />
+        <?php endif; ?>
+        <!-- Theme style -->
+        <link href="<?php echo ROOT . TEMPLATE ?>AdminLTE-master/css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        
+        <?php
+        
+            if (\Implant\FrontController::getController() !== 'index') {
+                $fileCSS = CSS . \Implant\FrontController::getControllerAction() . '.css';
+                $fileJS = JS . \Implant\FrontController::getControllerAction() . '.js';
+            }
+            
+            if (file_exists($fileCSS))
+                echo "<link rel='stylesheet' href='{$fileCSS}'>";
+                        
+        ?>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="/implant6/public/libs/html5shiv-3.7/html5shiv.min.js"></script>
+          <script src="/implant6/public/libs/respond-1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="skin-black">
+        <!-- header logo: style can be found in header.less -->
+        <?php require_once('sections/header.phtml'); ?>
+        
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+            <!-- Left side column. contains the logo and sidebar -->
+            <?php require_once('sections/leftSideBar.phtml'); ?>
+            
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <?php require_once('sections/rightSideBar.phtml'); ?>
+            
+        </div><!-- ./wrapper -->
+
+        <!-- jQuery 2.1.0 -->
+        <script src="<?php echo JQUERY ?>"></script>
+        <!-- Bootstrap 3.1.1 -->
+        <script src="<?php echo TBJS ?>"></script>
+        <?php if (\Implant\FrontController::getController() !== 'index' && \Implant\FrontController::getAction() === 'index') : ?>
+            <!-- DATA TABES SCRIPT -->
+            <script src="<?php echo JQDATATABLE ?>" type="text/javascript"></script>
+            <script src="<?php echo TABLETOOLSJS ?>" type="text/javascript"></script>
+            <script src="<?php echo TBDATATABLEJS ?>" type="text/javascript"></script>
+        <?php endif; ?>
+        <!-- AdminLTE App -->
+        <script src="<?php echo ROOT . TEMPLATE ?>AdminLTE-master/js/AdminLTE/app.js" type="text/javascript"></script>
+        
+        <?php
+        
+            if (\Implant\FrontController::getController() !== 'index' && 
+                (\Implant\FrontController::getAction() !== 'index' || \Implant\FrontController::getAction() === 'excluir'))
+                echo "<script src='" . JQUERYVALIDATION . "' type='text/javascript'></script>";
+                
+            if (file_exists($fileJS))
+                echo "<script src='" . ROOT . $fileJS . "' type='text/javascript'></script>";
+        ?>
+                
+    </body>
+</html>

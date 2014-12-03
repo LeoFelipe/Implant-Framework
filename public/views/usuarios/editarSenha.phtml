@@ -1,0 +1,49 @@
+<form role="form" id="form" name="form" action="<?php echo ROOT . \Implant\FrontController::getControllerActionParams(); ?>" method="POST">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" readonly value="<?php echo $view_usuarios->getId(); ?>">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login" readonly value="<?php echo $view_usuarios->getLogin(); ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box-body">
+                <?php if ($view_usuarios->getSenha()) : ?>
+                    <div class="form-group">
+                        <label for="senhaAtual">Senha Atual</label>
+                        <input type="text" class="form-control" id="senhaAtual" name="senhaAtual">
+                    </div>
+                <?php endif; ?>
+                <div class="form-group">
+                    <label for="novaSenha">Nova Senha</label>
+                    <input type="text" class="form-control" id="novaSenha" name="novaSenha">
+                </div>
+                <div class="form-group">
+                    <label for="novaSenhaConfirm">Confirme a Nova Senha</label>
+                    <input type="text" class="form-control" id="novaSenhaConfirm" name="novaSenhaConfirm">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary center-block">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>
