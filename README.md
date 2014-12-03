@@ -1,8 +1,8 @@
 Implant-Framework
 =================
 
-PS.: Versão 0.1 (Versão não mais em desenvolvimento).
-     Nova versão (0.2) em desenvolvimento.
+PS.: Versão 0.1 (Desenvolvimento parado).
+     Versão 0.2 em desenvolvimento.
 
 Projeto em Desenvolvimento: 
 
