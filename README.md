@@ -1,6 +1,9 @@
 Implant-Framework
 =================
 
+PS.: Versão 0.1 (Versão não mais em desenvolvimento).
+     Nova versão (0.2) em desenvolvimento.
+
 Projeto em Desenvolvimento: 
 
 Framework específico para construção de sistemas web corporativos.
